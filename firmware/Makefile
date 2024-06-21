@@ -105,8 +105,8 @@ fw-shipped-$(CONFIG_USB_KAWETH) += kaweth/new_code.bin kaweth/trigger_code.bin \
 				   kaweth/new_code_fix.bin \
 				   kaweth/trigger_code_fix.bin
 ifdef CONFIG_FIRMWARE_IN_KERNEL
-fw-shipped-$(CONFIG_EXYNOS7570_ACPM) += ../firmware/exynos7570_acpm_pedo.fw
-fw-shipped-$(CONFIG_EXYNOS7570_ACPM) += ../firmware/exynos7570_acpm_draminit_s.fw
+fw-shipped-$(CONFIG_EXYNOS7570_ACPM) += exynos7570_acpm_pedo.fw
+fw-shipped-$(CONFIG_EXYNOS7570_ACPM) += exynos7570_acpm_draminit_s.fw
 fw-shipped-$(CONFIG_EXYNOS8890_APM) += apm_8890_v6.h
 fw-shipped-$(CONFIG_USB_SERIAL_KEYSPAN_MPR) += keyspan/mpr.fw
 fw-shipped-$(CONFIG_USB_SERIAL_KEYSPAN_USA18X) += keyspan/usa18x.fw
@@ -158,9 +158,9 @@ quiet_cmd_h16tofw  = H16TOFW $@
       cmd_h16tofw  = $(objtree)/$(obj)/ihex2fw -w $< $@
 
 quiet_cmd_fwbin = MK_FW   $@
-      cmd_fwbin = FWNAME="$(patsubst firmware/%.gen.S,%,$@)";		     \
+      cmd_fwbin = FWNAME="$(patsubst ../firmware/%.gen.S,%,$@)";		     \
 		  FWSTR="$(subst /,_,$(subst .,_,$(subst -,_,$(patsubst	     \
-				firmware/%.gen.S,%,$@))))";		     \
+				../firmware/%.gen.S,%,$@))))";		     \
 		  ASM_WORD=$(if $(CONFIG_64BIT),.quad,.long);		     \
 		  ASM_ALIGN=$(if $(CONFIG_64BIT),3,2);			     \
 		  PROGBITS=$(if $(CONFIG_ARM),%,@)progbits;		     \
