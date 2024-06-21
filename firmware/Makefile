@@ -168,7 +168,7 @@ quiet_cmd_fwbin = MK_FW   $@
 		  echo "    .section .rodata"				>>$@;\
 		  echo "    .p2align $${ASM_ALIGN}"			>>$@;\
 		  echo "_fw_$${FWSTR}_bin:"				>>$@;\
-		  echo "    .incbin \"$(2)\""				>>$@;\
+		  echo "    .incbin \"../$(2)\""				>>$@;\
 		  echo "_fw_end:"					>>$@;\
 		  echo "   .section .rodata.str,\"aMS\",$${PROGBITS},1"	>>$@;\
 		  echo "    .p2align $${ASM_ALIGN}"			>>$@;\
@@ -179,8 +179,6 @@ quiet_cmd_fwbin = MK_FW   $@
 		  echo "    $${ASM_WORD} _fw_$${FWSTR}_name"		>>$@;\
 		  echo "    $${ASM_WORD} _fw_$${FWSTR}_bin"		>>$@;\
 		  echo "    $${ASM_WORD} _fw_end - _fw_$${FWSTR}_bin"	>>$@;
-
-$(info    VAR is $(cmd_fwbin))
 
 # One of these files will change, or come into existence, whenever
 # the configuration changes between 32-bit and 64-bit. The .S files
