@@ -180,6 +180,8 @@ quiet_cmd_fwbin = MK_FW   $@
 		  echo "    $${ASM_WORD} _fw_$${FWSTR}_bin"		>>$@;\
 		  echo "    $${ASM_WORD} _fw_end - _fw_$${FWSTR}_bin"	>>$@;
 
+$(info    VAR is $(cmd_fwbin))
+
 # One of these files will change, or come into existence, whenever
 # the configuration changes between 32-bit and 64-bit. The .S files
 # need to change when that happens.
